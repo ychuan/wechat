@@ -27,6 +27,7 @@ type Params struct {
 	OutTradeNo string
 	OpenID     string
 	TradeType  string
+	NotifyUrl  string
 }
 
 // Config 是传出用于 jsdk 用的参数
@@ -94,6 +95,7 @@ func (pcf *Pay) PrePayOrder(p *Params) (payOrder PreOrder, err error) {
 	param["body"] = p.Body
 	param["mch_id"] = pcf.PayMchID
 	param["nonce_str"] =nonceStr
+	param["notify_url"] = p.NotifyUrl
 	param["out_trade_no"] =p.OutTradeNo
 	param["spbill_create_ip"] =p.CreateIP
 	param["total_fee"] =p.TotalFee
