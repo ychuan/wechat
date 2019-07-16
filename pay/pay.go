@@ -21,13 +21,13 @@ type Pay struct {
 // Params was NEEDED when request unifiedorder
 // 传入的参数，用于生成 prepay_id 的必需参数
 type Params struct {
+	NotifyUrl  string
 	TotalFee   string
 	CreateIP   string
 	Body       string
 	OutTradeNo string
 	OpenID     string
 	TradeType  string
-	NotifyUrl  string
 }
 
 // Config 是传出用于 jsdk 用的参数
@@ -95,12 +95,12 @@ func (pcf *Pay) PrePayOrder(p *Params) (payOrder PreOrder, err error) {
 	param["body"] = p.Body
 	param["mch_id"] = pcf.PayMchID
 	param["nonce_str"] =nonceStr
-	param["notify_url"] = p.NotifyUrl
 	param["out_trade_no"] =p.OutTradeNo
 	param["spbill_create_ip"] =p.CreateIP
 	param["total_fee"] =p.TotalFee
 	param["trade_type"] =p.TradeType
 	param["openid"] = p.OpenID
+	param["notify_url"] = p.NotifyUrl
 
 	bizKey := "&key="+pcf.PayKey
 	str := orderParam(param,bizKey)
