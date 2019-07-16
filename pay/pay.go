@@ -94,7 +94,6 @@ func (pcf *Pay) PrePayOrder(p *Params) (payOrder PreOrder, err error) {
 	param["body"] = p.Body
 	param["mch_id"] = pcf.PayMchID
 	param["nonce_str"] =nonceStr
-	param["notify_url"] =pcf.PayNotifyURL
 	param["out_trade_no"] =p.OutTradeNo
 	param["spbill_create_ip"] =p.CreateIP
 	param["total_fee"] =p.TotalFee
